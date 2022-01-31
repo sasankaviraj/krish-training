@@ -59,6 +59,7 @@ public class DateTimeZone {
         System.out.println("UTC/GMT Time "+ zdt);
         System.out.println("Epoch Time "+ zdt.toEpochSecond());
         System.out.println("Epoch Time to UTC/GMT "+ Instant.ofEpochSecond(zdt.toEpochSecond()));
+        System.out.println("UTC/GMT Time to Local Time "+ zdt.withZoneSameInstant(Clock.systemDefaultZone().getZone()));
 
     }
 
