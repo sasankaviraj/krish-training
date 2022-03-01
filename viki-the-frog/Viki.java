@@ -16,20 +16,24 @@ class Viki{
 				distance -= 5;
 				if(distance != 0){
 					seconds += 1;
-					if(distance >=3){
-						distance -= 3;
-						if(distance != 0){
-							seconds += 2;
-							distance -= 1;
-								if(distance!=0){
-									seconds += 3;
-								}
-						}
-					}
 				}
-			}else{
-				distance = 0;
+				if(distance < 3){
+					return seconds;
+				}
 			}
+			if(distance >= 3){
+				distance -= 3;
+				if(distance != 0){
+					seconds += 2;
+				}	
+			}
+			if(distance >= 1){
+				distance -= 1;
+				if(distance != 0){
+					seconds += 3;
+				}
+			}
+			
 		}
 		return seconds;
 	}
