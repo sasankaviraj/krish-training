@@ -6,7 +6,7 @@ class Viki{
 		System.out.println("How far Viki needs to jump?");
 		Scanner scanner = new Scanner(System.in);
 		int distance = scanner.nextInt();
-		int seconds = 0;
+		int seconds = 0; 
 		while(distance > 0){
 			if(distance >= 5){
 				distance -= 5;
