@@ -1,11 +1,15 @@
-public class Viki{
-	private int distance;
+import java.util.Scanner;
 
-	public void setDistance(int  distance){
-		this.distance = distance;
+class Viki{
+
+	public static void main(String[] args){
+		System.out.println("How far Viki needs to jump?");
+		Scanner scanner = new Scanner(System.in);
+		int distance = scanner.nextInt();
+		System.out.println("Viki takes "+calculateTime(distance)+" seconds to jump");
 	}
 
-	public int calculateTime(){
+	public static int calculateTime(int distance){
 		int seconds = 0;
 		while(distance > 0){
 			if(distance >= 5){
@@ -29,5 +33,4 @@ public class Viki{
 		}
 		return seconds;
 	}
-
 }
