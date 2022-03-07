@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -10,20 +12,33 @@ public class Application {
 
     public static void main(String[] args) {
 
-        System.out.println("Enter the number sequence with spaces or commas: ");
+        System.out.println("Enter the number sequence with spaces: ");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
-        if(!input.matches(".*[a-zA-Z.?].*")){
-            if(input.contains(",")){
-                input = input.replace(",", " ");
-            }
+        if(validate(input)){
             sortNumbers(input);
-        }else{
-            System.out.println("Input valid numbers");
+        }else {
+            System.out.println("Input a valid number sequence");
         }
     }
 
+    static boolean validate(String input){
+        boolean validation = true;
+        Pattern pattern = Pattern.compile("[^a-zA-Z0-9. ]");
+        Matcher matcher = pattern.matcher(input);
+        if(input.isEmpty()){
+            validation = false;
+        }
+        //special characters
+        else if(matcher.find()){
+            validation = false;
+        }
+        else if(input.matches(".*[a-zA-Z.?].*")){
+            validation = false;
+        }
+        return validation;
+    }
 
     //sort numbers
     static void sortNumbers(String input){
