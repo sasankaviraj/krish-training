@@ -1,3 +1,5 @@
+Find anagram if two words
+
 Enter the first word: silent
 Enter the second word: listen
 The given two words are anagram of each other

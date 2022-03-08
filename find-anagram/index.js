@@ -26,6 +26,9 @@ if(validated){
         console.log('The given two words are not anagram of each other')
     }
 }
+else {
+    console.log('Input valid words to find anagram')
+}
 
 function sort(charArray){
     let sortedCharIndexes = [];
