@@ -49,7 +49,7 @@ public class Application {
         Integer[] numbers = new Integer [numberList.size()];
         numberList.toArray(numbers);
 
-        for(Integer number : numbers){
+        for(int j = 0; j < numbers.length; j++){
             for (int i = 0; i < numbers.length; i++){
                 if((i+1)<=numbers.length -1){
                     if(numbers[i] > numbers[i+1]){
