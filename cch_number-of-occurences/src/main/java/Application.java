@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Application {
 
@@ -10,7 +12,28 @@ public class Application {
 
         String input = scanner.nextLine().toLowerCase();
 
-        findNumberOfOccurrences(input);
+        if(validate(input))
+            findNumberOfOccurrences(input);
+    }
+
+    static boolean validate(String input){
+        boolean validation = true;
+        Pattern pattern = Pattern.compile("[^a-zA-Z0-9. ]");
+        Matcher matcher = pattern.matcher(input);
+        if(input.isEmpty()){
+            System.out.println("Word cannot be empty");
+            validation = false;
+        }
+        //special characters
+        else if(matcher.find()){
+            System.out.println("Word cannot contain special characters");
+            validation = false;
+        }
+        else if(input.matches(".*[0-9.?].*")){
+            System.out.println("Word cannot contain numbers");
+            validation = false;
+        }
+        return validation;
     }
 
     private static void findNumberOfOccurrences(String input){
