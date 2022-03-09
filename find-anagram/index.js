@@ -26,9 +26,7 @@ if(validated){
         console.log('The given two words are not anagram of each other')
     }
 }
-else {
-    console.log('Input valid words to find anagram')
-}
+
 
 function sort(charArray){
     let sortedCharIndexes = [];
@@ -41,7 +39,7 @@ function sort(charArray){
     of(sortedCharIndexes).pipe(
         map(result => {
             result.sort((i,j) => {
-                return i < j ? -1 : 1;
+                return Number(i) < Number(j) ? -1 : 1;
             })
             return result;
         }),
@@ -53,11 +51,18 @@ function sort(charArray){
 function checkValidity(word1,word2){
     let isValid = true;
     let regex = new RegExp("[0-9]+");
+    let regexForSpcChar = new RegExp("[^a-zA-Z0-9. ]");
     if (word1.length !== word2.length){
         isValid = false;
+        console.log('Character length is not matched. try again')
     }
     if (regex.test(word1) || regex.test(word2)){
         isValid = false;
+        console.log('Numbers are not allowed')
+    }
+    if (regexForSpcChar.test(word1) || regexForSpcChar.test(word2)){
+        isValid = false;
+        console.log('input words without special characters');
     }
     return isValid;
 }
