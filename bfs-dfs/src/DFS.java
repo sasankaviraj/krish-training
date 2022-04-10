@@ -1,35 +1,51 @@
 import java.util.*;
 
 public class DFS {
+    LinkedList<Node> visitedList = new LinkedList<>();
+    Stack<Node> stack = new Stack<>();
 
-    private int graph[][] = {{1},{2,4},{3,6,8},{5,7,9},{2,8},{3}};
-
-    void dfsExecute(int rootNode){
-        ArrayList<Integer> visitedList = new ArrayList<>();
-        Stack<Integer> stack = new Stack<>();
-
-        for (int i : graph[rootNode]) {
-            stack.add(i);
-            visitedList.add(i);
+    void traverse(Node rootNode) {
+        stack.add(rootNode);
+        if(!visitedList.contains(rootNode)){
+            visitedList.add(rootNode);
         }
-
         while(!stack.isEmpty()){
-            for (int i = 0; i < graph.length; i++) {
-                if(stack.isEmpty()){
-                    break;
+            if(rootNode.left!=null){
+                if(!visitedList.contains(rootNode.left)){
+                    visitedList.add(rootNode.left);
+                    traverse(rootNode.left);
                 }
-                stack.pop();
-                for (int j : graph[i]) {
-                    if (!visitedList.contains(j)) {
-                        stack.add(j);
-                        visitedList.add(j);
+            }
+            if(rootNode.right!=null){
+                if(!visitedList.contains(rootNode.right)){
+                    visitedList.add(rootNode.right);
+                    traverse(rootNode.right);
+                }
+                else {
+                    if(!stack.isEmpty()){
+                        stack.pop();
+                        if(!stack.isEmpty()){
+                            rootNode = stack.peek();
+                        }
+                    }
+                }
+            }
+            else {
+                if(!stack.isEmpty()){
+                    stack.pop();
+                    if(!stack.isEmpty()){
+                        rootNode = stack.peek();
                     }
                 }
             }
         }
+    }
 
-        visitedList.forEach((v)->{
-            System.out.println(v+" is visited");
+    void print(){
+        visitedList.forEach(node -> {
+            System.out.println(node.value+" is visited");
         });
     }
+
+
 }
