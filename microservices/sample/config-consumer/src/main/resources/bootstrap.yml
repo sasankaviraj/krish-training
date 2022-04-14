@@ -1,0 +1,5 @@
+#use bootstrap.yml to override default because spring calls 8888 port as default to find configs.
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8191
