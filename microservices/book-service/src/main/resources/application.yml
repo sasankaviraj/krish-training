@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: book
+
+  jpa:
+    hibernate:
+      ddl-auto: update
