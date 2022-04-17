@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 @SpringBootApplication
-@EntityScan(basePackages = "commons.model")  //to find the model classes outside the application (in commons)
+@EntityScan(basePackages = "commons.model.customer")  //to find the model classes as entities outside the application (in commons)
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true) //enable us to use the method level security
 public class ProfileServiceApplication {

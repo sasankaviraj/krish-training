@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan(basePackages = "commons.model")
+@EntityScan(basePackages = "commons.model.book")
 public class BookServiceApplication {
 
     public static void main(String[] args) {

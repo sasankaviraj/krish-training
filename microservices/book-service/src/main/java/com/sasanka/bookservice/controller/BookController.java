@@ -1,12 +1,11 @@
 package com.sasanka.bookservice.controller;
 
 import com.sasanka.bookservice.service.BookService;
-import commons.model.Book;
+import commons.model.book.Book;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/book")
@@ -18,4 +17,15 @@ public class BookController {
     public Book save(@RequestBody Book book){
         return bookService.save(book);
     }
+
+    @RequestMapping(value = "/find",method = RequestMethod.GET)
+    public List<Book> findAll(){
+        return bookService.findAll();
+    }
+
+    @RequestMapping(value = "/find/{id}",method = RequestMethod.GET)
+    public Book findById(@PathVariable("id") Integer id){
+        return bookService.findById(id);
+    }
+
 }

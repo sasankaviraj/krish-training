@@ -1,13 +1,10 @@
 package com.sasanka.profileservice.controller;
 
 import com.sasanka.profileservice.service.CustomerService;
-import commons.model.Customer;
+import commons.model.customer.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,8 +22,13 @@ public class ProfileController {
     }
 
     @RequestMapping(value = "/find",method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ROLE_operator')")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public List<Customer> findAll(){
         return customerService.findAll();
+    }
+
+    @RequestMapping(value = "/find/{id}",method = RequestMethod.GET)
+    public Customer findById(@PathVariable("id") Integer id){
+        return customerService.findById(id);
     }
 }
