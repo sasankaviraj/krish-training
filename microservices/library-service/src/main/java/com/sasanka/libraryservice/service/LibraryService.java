@@ -4,6 +4,7 @@ import com.sasanka.libraryservice.model.DetailResponse;
 import commons.model.library.Library;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public interface LibraryService {
 
@@ -13,5 +14,5 @@ public interface LibraryService {
 
     List<Library> findAll();
 
-    DetailResponse findDetailResponse(Integer id);
+    DetailResponse findDetailResponse(Integer id) throws ExecutionException, InterruptedException;
 }

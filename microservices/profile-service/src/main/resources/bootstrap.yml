@@ -2,3 +2,7 @@ spring:
   cloud:
     config:
       uri: http://localhost:8191
+  application:
+    name: profile-service
+server:
+  port: 0

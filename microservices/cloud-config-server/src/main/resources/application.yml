@@ -9,3 +9,10 @@ spring:
           uri: https://github.com/sasankaviraj/spring-cloud-config-store
           search-paths:
             - '*service'  # *service --> start with anything but end with service
+  application:
+    name: cloud-config-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true

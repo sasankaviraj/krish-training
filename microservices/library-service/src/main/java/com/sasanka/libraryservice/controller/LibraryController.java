@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping(value = "/library")
@@ -27,7 +28,7 @@ public class LibraryController {
     }
 
     @RequestMapping(value = "/find/{id}",method = RequestMethod.GET)
-    public Response findById(@PathVariable("id") Integer id, @RequestParam(required = false) String type){
+    public Response findById(@PathVariable("id") Integer id, @RequestParam(required = false) String type) throws ExecutionException, InterruptedException {
         //if type is not there we will only return library model, else type is full we'll return with customer and book model
 
         if(type==null){

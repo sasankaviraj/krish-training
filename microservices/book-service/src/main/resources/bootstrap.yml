@@ -2,3 +2,15 @@ spring:
   cloud:
     config:
       uri: http://localhost:8191
+  application:
+    name: book-service   #bootstrap.yml runs before application.yml
+server:
+  port: 0 #randomly select the port
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}-${random.int} #giving dynamic id for the service instance running(when same service runs in multiple instances for scalability enhance)
+    hostname: localhost
